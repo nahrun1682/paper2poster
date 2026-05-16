@@ -216,3 +216,22 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Local agent/runtime files
+.claude
+.codex
+!.codex/
+!.codex/skills/
+!.codex/skills/poster-layout-extractor/
+!.codex/skills/poster-layout-extractor/**
+.github
+AGENTS.md
+CLAUDE.md
+
+# Generated poster/layout review artifacts
+.codex-output/
+.playwright-mcp/
+poster-layout-*.png
+
+# Local source documents
+data/
