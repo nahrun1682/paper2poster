@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Poster HTML Template</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: #e5e7eb;
+        color: #111827;
+        font-family: "IPAPGothic", "IPA Pゴシック", "Noto Sans CJK JP", "Yu Gothic", "Hiragino Kaku Gothic ProN", Meiryo, ui-sans-serif, system-ui, sans-serif;
+      }
+
+      .poster-canvas {
+        position: relative;
+        container-type: inline-size;
+        width: min(100vw, calc(100vh * 0.706922));
+        aspect-ratio: 6858000 / 9701213;
+        background: #f8fafc;
+        box-shadow: 0 24px 80px rgba(15, 23, 42, 0.22);
+        overflow: hidden;
+      }
+
+      .poster-element {
+        position: absolute;
+        overflow: hidden;
+        border: 1px solid rgba(17, 24, 39, 0.28);
+        padding: clamp(1px, 0.55cqw, 10px);
+        line-height: 1.25;
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+      }
+
+      .poster-element.image {
+        display: grid;
+        place-items: center;
+        padding: 0;
+        background: transparent;
+      }
+
+      .poster-element.section-heading {
+        display: flex;
+        align-items: center;
+        padding: 0 clamp(2px, 0.8cqw, 12px);
+        line-height: 1;
+        font-weight: 700;
+      }
+
+      .poster-element.poster-title {
+        display: flex;
+        align-items: center;
+        padding: 0 clamp(2px, 0.65cqw, 10px);
+        line-height: 1.05;
+        font-weight: 700;
+      }
+
+      .poster-element img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="poster-canvas" aria-label="Poster HTML Template">
+      <section class="poster-element shape shape_01" style="left:0.0%;top:1.8851%;width:100.0%;height:8.6716%;background:#1E3A5F;border-color:#1E3A5F;color:#111827;font-size:clamp(4px, 1.2cqw, 18px);" data-placeholder="{{shape_01}}"></section>
+      <section class="poster-element text poster-title shape_02" style="left:3.7333%;top:2.3564%;width:92.5333%;height:4.1473%;background:transparent;border-color:transparent;color:#FFFFFF;font-size:clamp(4px, 4.3981cqw, 57.0px);font-weight:700;" data-placeholder="{{shape_02}}">{{shape_02}}</section>
+      <section class="poster-element text shape_03" style="left:3.7333%;top:6.5979%;width:92.5333%;height:2.8277%;background:transparent;border-color:transparent;color:#C8DCFA;font-size:clamp(4px, 1.9444cqw, 25.2px);" data-placeholder="{{shape_03}}">{{shape_03}}</section>
+      <section class="poster-element shape shape_04" style="left:3.7333%;top:11.3108%;width:92.5333%;height:6.7865%;background:#FFFFFF;border-color:#C8DCFA;color:#111827;font-size:clamp(4px, 1.2cqw, 18px);" data-placeholder="{{shape_04}}"></section>
+      <section class="poster-element shape shape_05" style="left:3.7333%;top:11.3108%;width:0.8%;height:6.7865%;background:#028090;border-color:#028090;color:#111827;font-size:clamp(4px, 1.2cqw, 18px);" data-placeholder="{{shape_05}}"></section>
+      <section class="poster-element text shape_06" style="left:5.3333%;top:11.6878%;width:90.1333%;height:6.0324%;background:transparent;border-color:transparent;color:#2D3748;font-size:clamp(4px, 1.8519cqw, 24.0px);" data-placeholder="{{shape_06}}">{{shape_06}}</section>
+      <section class="poster-element shape shape_07" style="left:3.7333%;top:18.8513%;width:45.2667%;height:15.8351%;background:#EAF1FB;border-color:#C8DCFA;color:#111827;font-size:clamp(4px, 1.2cqw, 18px);" data-placeholder="{{shape_07}}"></section>
+      <section class="poster-element shape shape_08" style="left:3.7333%;top:18.8513%;width:45.2667%;height:2.8277%;background:#1E3A5F;border-color:#1E3A5F;color:#111827;font-size:clamp(4px, 1.2cqw, 18px);" data-placeholder="{{shape_08}}"></section>
+      <section class="poster-element text section-heading shape_09" style="left:3.7333%;top:18.8513%;width:45.2667%;height:2.8277%;background:transparent;border-color:transparent;color:#FFFFFF;font-size:clamp(4px, 2.963cqw, 38.4px);font-weight:700;" data-placeholder="{{shape_09}}">{{shape_09}}</section>
+      <section class="poster-element text shape_10" style="left:5.0667%;top:22.056%;width:43.4%;height:12.0648%;background:transparent;border-color:transparent;color:#2D3748;font-size:clamp(4px, 1.7593cqw, 22.8px);" data-placeholder="{{shape_10}}">{{shape_10}}</section>
+      <section class="poster-element shape shape_11" style="left:51.0%;top:18.8513%;width:45.2667%;height:15.8351%;background:#E4F3F1;border-color:#C8DCFA;color:#111827;font-size:clamp(4px, 1.2cqw, 18px);" data-placeholder="{{shape_11}}"></section>
+      <section class="poster-element shape shape_12" style="left:51.0%;top:18.8513%;width:45.2667%;height:2.8277%;background:#028090;border-color:#028090;color:#111827;font-size:clamp(4px, 1.2cqw, 18px);" data-placeholder="{{shape_12}}"></section>
+      <section class="poster-element text section-heading shape_13" style="left:51.0%;top:18.8513%;width:45.2667%;height:2.8277%;background:transparent;border-color:transparent;color:#FFFFFF;font-size:clamp(4px, 2.963cqw, 38.4px);font-weight:700;" data-placeholder="{{shape_13}}">{{shape_13}}</section>
+      <section class="poster-element text shape_14" style="left:52.3333%;top:22.056%;width:43.4%;height:12.0648%;background:transparent;border-color:transparent;color:#2D3748;font-size:clamp(4px, 1.7593cqw, 22.8px);" data-placeholder="{{shape_14}}">{{shape_14}}</section>
+      <section class="poster-element shape shape_15" style="left:3.7333%;top:35.4404%;width:92.5333%;height:29.2194%;background:#FFFFFF;border-color:#C8DCFA;color:#111827;font-size:clamp(4px, 1.2cqw, 18px);" data-placeholder="{{shape_15}}"></section>
+      <section class="poster-element shape shape_16" style="left:3.7333%;top:35.4404%;width:92.5333%;height:2.8277%;background:#1E3A5F;border-color:#1E3A5F;color:#111827;font-size:clamp(4px, 1.2cqw, 18px);" data-placeholder="{{shape_16}}"></section>
+      <section class="poster-element text section-heading shape_17" style="left:3.7333%;top:35.4404%;width:92.5333%;height:2.8277%;background:transparent;border-color:transparent;color:#FFFFFF;font-size:clamp(4px, 2.963cqw, 38.4px);font-weight:700;" data-placeholder="{{shape_17}}">{{shape_17}}</section>
+      <section class="poster-element shape shape_18" style="left:5.0667%;top:39.0221%;width:89.8667%;height:24.5066%;background:#EFF4FC;border-color:#C8DCFA;color:#111827;font-size:clamp(4px, 1.2cqw, 18px);" data-placeholder="{{shape_18}}"></section>
+      <section class="poster-element text shape_19" style="left:5.0667%;top:39.0221%;width:89.8667%;height:24.5066%;background:transparent;border-color:transparent;color:#8899AA;font-size:clamp(4px, 1.9444cqw, 25.2px);" data-placeholder="{{shape_19}}">{{shape_19}}</section>
+      <section class="poster-element shape shape_20" style="left:3.7333%;top:65.4138%;width:45.2667%;height:15.2695%;background:#EAF1FB;border-color:#C8DCFA;color:#111827;font-size:clamp(4px, 1.2cqw, 18px);" data-placeholder="{{shape_20}}"></section>
+      <section class="poster-element shape shape_21" style="left:3.7333%;top:65.4138%;width:45.2667%;height:2.8277%;background:#1E3A5F;border-color:#1E3A5F;color:#111827;font-size:clamp(4px, 1.2cqw, 18px);" data-placeholder="{{shape_21}}"></section>
+      <section class="poster-element text section-heading shape_22" style="left:3.7333%;top:65.4138%;width:45.2667%;height:2.8277%;background:transparent;border-color:transparent;color:#FFFFFF;font-size:clamp(4px, 2.8148cqw, 36.48px);font-weight:700;" data-placeholder="{{shape_22}}">{{shape_22}}</section>
+      <section class="poster-element text shape_23" style="left:5.0667%;top:68.6186%;width:43.4%;height:11.4993%;background:transparent;border-color:transparent;color:#2D3748;font-size:clamp(4px, 1.7593cqw, 22.8px);" data-placeholder="{{shape_23}}">{{shape_23}}</section>
+      <section class="poster-element shape shape_24" style="left:51.0%;top:65.4138%;width:45.2667%;height:15.2695%;background:#E4F3F1;border-color:#C8DCFA;color:#111827;font-size:clamp(4px, 1.2cqw, 18px);" data-placeholder="{{shape_24}}"></section>
+      <section class="poster-element shape shape_25" style="left:51.0%;top:65.4138%;width:45.2667%;height:2.8277%;background:#028090;border-color:#028090;color:#111827;font-size:clamp(4px, 1.2cqw, 18px);" data-placeholder="{{shape_25}}"></section>
+      <section class="poster-element text section-heading shape_26" style="left:51.0%;top:65.4138%;width:45.2667%;height:2.8277%;background:transparent;border-color:transparent;color:#FFFFFF;font-size:clamp(4px, 2.8148cqw, 36.48px);font-weight:700;" data-placeholder="{{shape_26}}">{{shape_26}}</section>
+      <section class="poster-element text shape_27" style="left:52.3333%;top:68.6186%;width:43.4%;height:11.4993%;background:transparent;border-color:transparent;color:#2D3748;font-size:clamp(4px, 1.7593cqw, 22.8px);" data-placeholder="{{shape_27}}">{{shape_27}}</section>
+      <section class="poster-element shape shape_28" style="left:3.7333%;top:81.4374%;width:92.5333%;height:8.6716%;background:#FFF8E6;border-color:#F0C040;color:#111827;font-size:clamp(4px, 1.2cqw, 18px);" data-placeholder="{{shape_28}}"></section>
+      <section class="poster-element shape shape_29" style="left:3.7333%;top:81.4374%;width:92.5333%;height:2.6392%;background:#C87800;border-color:#C87800;color:#111827;font-size:clamp(4px, 1.2cqw, 18px);" data-placeholder="{{shape_29}}"></section>
+      <section class="poster-element text section-heading shape_30" style="left:3.7333%;top:81.4374%;width:92.5333%;height:2.6392%;background:transparent;border-color:transparent;color:#FFFFFF;font-size:clamp(4px, 2.963cqw, 38.4px);font-weight:700;" data-placeholder="{{shape_30}}">{{shape_30}}</section>
+      <section class="poster-element text shape_31" style="left:5.0667%;top:84.4536%;width:90.6667%;height:5.0898%;background:transparent;border-color:transparent;color:#4A3500;font-size:clamp(4px, 1.7593cqw, 22.8px);" data-placeholder="{{shape_31}}">{{shape_31}}</section>
+      <section class="poster-element shape shape_32" style="left:0.0%;top:90.7688%;width:100.0%;height:3.9588%;background:#1E3A5F;border-color:#1E3A5F;color:#111827;font-size:clamp(4px, 1.2cqw, 18px);" data-placeholder="{{shape_32}}"></section>
+      <section class="poster-element text shape_33" style="left:3.7333%;top:90.7688%;width:30.8444%;height:3.9588%;background:transparent;border-color:transparent;color:#FFFFFF;font-size:clamp(4px, 1.5741cqw, 20.4px);" data-placeholder="{{shape_33}}">{{shape_33}}</section>
+      <section class="poster-element text shape_34" style="left:34.5778%;top:90.7688%;width:30.8444%;height:3.9588%;background:transparent;border-color:transparent;color:#FFFFFF;font-size:clamp(4px, 1.5741cqw, 20.4px);" data-placeholder="{{shape_34}}">{{shape_34}}</section>
+      <section class="poster-element text shape_35" style="left:65.4222%;top:90.7688%;width:30.8444%;height:3.9588%;background:transparent;border-color:transparent;color:#C8DCFA;font-size:clamp(4px, 1.4815cqw, 19.2px);" data-placeholder="{{shape_35}}">{{shape_35}}</section>
+    </main>
+    <script>
+      function fitPosterText() {
+        const elements = document.querySelectorAll(".poster-element.text:not(.poster-title):not(.section-heading)");
+        for (const element of elements) {
+          const style = window.getComputedStyle(element);
+          let size = parseFloat(style.fontSize);
+          const minSize = 10;
+          while (size > minSize && element.scrollHeight > element.clientHeight) {
+            size -= 0.5;
+            element.style.fontSize = size + "px";
+          }
+        }
+      }
+
+      window.addEventListener("load", () => {
+        if (document.fonts && document.fonts.ready) {
+          document.fonts.ready.then(fitPosterText);
+        } else {
+          fitPosterText();
+        }
+      });
+      window.addEventListener("resize", fitPosterText);
+    </script>
+  </body>
+</html>

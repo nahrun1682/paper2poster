@@ -224,6 +224,8 @@ __marimo__/
 !.codex/skills/
 !.codex/skills/poster-layout-extractor/
 !.codex/skills/poster-layout-extractor/**
+!.codex/skills/paper-to-poster-drafter/
+!.codex/skills/paper-to-poster-drafter/**
 .github
 AGENTS.md
 CLAUDE.md

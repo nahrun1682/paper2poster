@@ -1,0 +1,20 @@
+{
+  "source": "templates/powerpoint/research_template.pptx",
+  "slide_count": 1,
+  "shape_count": 35,
+  "kind_counts": {
+    "shape": 17,
+    "text": 18
+  },
+  "text_integrity": {
+    "extracted_text_shapes": 18,
+    "missing_in_preview": [],
+    "preview_text": "PosterLayoutPreview研究タイトル（日本語）ResearchTitleinEnglish—subtitleifneeded【概要リード文】顧客・社会に提供する価値の要旨と、本研究がなぜ強いかを2〜3文で簡潔に記述してください。競合との差別化点や技術的独自性も含めて記載します。対応する課題課題①：〇〇に関する問題点・ペインポイント課題②：〇〇における非効率性・コスト超過課題③：〇〇の未解決事項・技術的ギャップ提供する価値価値①：〇〇の大幅な改善・パフォーマンス向上価値②：〇〇の効率化・コスト削減・時間短縮価値③：〇〇における新たな可能性・革新的変化概要【概要図・説明エリア】研究の概要・手法・技術的仕組み・成果のビジュアルをここに配置（アーキテクチャ図・フローチャート・実験結果グラフ等を挿入）適用分野・事業機会分野①：〇〇産業・製造業への直接応用分野②：〇〇サービス・プラットフォーム展開分野③：〇〇マーケットにおける新規参入機会現況と予定現況①：〇〇フェーズ（TRLX）達成・検証完了予定①：〇〇年度に〇〇を実施・実証試験予定予定②：〇〇部門との連携・事業化検討を計画討論事項討論①：〇〇についてどのようにお考えでしょうか？貴社・貴組織視点からのご意見をお聞かせください。討論②：〇〇に関する貴組織のニーズ・展開可能性・連携可能性について代表発表者：氏名太郎（〇〇部）連携部署：〇〇部門／△△グループ略語：AI：人工知能ML：機械学習LLM：大規模言語モデル"
+  },
+  "warnings": [
+    "Only the first slide is converted.",
+    "Solid colors are extracted on a best-effort basis.",
+    "Gradients, shadows, animations, and exact theme rendering are not reproduced.",
+    "Grouped-shape transforms may need manual adjustment."
+  ]
+}

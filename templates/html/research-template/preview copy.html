@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Poster Layout Preview</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: #e5e7eb;
+        color: #111827;
+        font-family: "IPAPGothic", "IPA Pゴシック", "Noto Sans CJK JP", "Yu Gothic", "Hiragino Kaku Gothic ProN", Meiryo, ui-sans-serif, system-ui, sans-serif;
+      }
+
+      .poster-canvas {
+        position: relative;
+        container-type: inline-size;
+        width: min(100vw, calc(100vh * 0.706922));
+        aspect-ratio: 6858000 / 9701213;
+        background: #f8fafc;
+        box-shadow: 0 24px 80px rgba(15, 23, 42, 0.22);
+        overflow: hidden;
+      }
+
+      .poster-element {
+        position: absolute;
+        overflow: hidden;
+        border: 1px solid rgba(17, 24, 39, 0.28);
+        padding: clamp(1px, 0.55cqw, 10px);
+        line-height: 1.25;
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+      }
+
+      .poster-element.image {
+        display: grid;
+        place-items: center;
+        padding: 0;
+        background: transparent;
+      }
+
+      .poster-element.section-heading {
+        display: flex;
+        align-items: center;
+        padding: 0 clamp(2px, 0.8cqw, 12px);
+        line-height: 1;
+        font-weight: 700;
+      }
+
+      .poster-element.poster-title {
+        display: flex;
+        align-items: center;
+        padding: 0 clamp(2px, 0.65cqw, 10px);
+        line-height: 1.05;
+        font-weight: 700;
+      }
+
+      .poster-element img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="poster-canvas" aria-label="Poster Layout Preview">
+      <section class="poster-element shape shape_01" style="left:0.0%;top:1.8851%;width:100.0%;height:8.6716%;background:#1E3A5F;border-color:#1E3A5F;color:#111827;font-size:clamp(4px, 1.2cqw, 18px);" data-placeholder="{{shape_01}}"></section>
+      <section class="poster-element text poster-title shape_02" style="left:3.7333%;top:2.3564%;width:92.5333%;height:4.1473%;background:transparent;border-color:transparent;color:#FFFFFF;font-size:clamp(4px, 4.3981cqw, 57.0px);font-weight:700;" data-placeholder="{{shape_02}}">研究タイトル（日本語）</section>
+      <section class="poster-element text shape_03" style="left:3.7333%;top:6.5979%;width:92.5333%;height:2.8277%;background:transparent;border-color:transparent;color:#C8DCFA;font-size:clamp(4px, 1.9444cqw, 25.2px);" data-placeholder="{{shape_03}}">Research Title in English — subtitle if needed</section>
+      <section class="poster-element shape shape_04" style="left:3.7333%;top:11.3108%;width:92.5333%;height:6.7865%;background:#FFFFFF;border-color:#C8DCFA;color:#111827;font-size:clamp(4px, 1.2cqw, 18px);" data-placeholder="{{shape_04}}"></section>
+      <section class="poster-element shape shape_05" style="left:3.7333%;top:11.3108%;width:0.8%;height:6.7865%;background:#028090;border-color:#028090;color:#111827;font-size:clamp(4px, 1.2cqw, 18px);" data-placeholder="{{shape_05}}"></section>
+      <section class="poster-element text shape_06" style="left:5.3333%;top:11.6878%;width:90.1333%;height:6.0324%;background:transparent;border-color:transparent;color:#2D3748;font-size:clamp(4px, 1.8519cqw, 24.0px);" data-placeholder="{{shape_06}}">【概要リード文】顧客・社会に提供する価値の要旨と、本研究がなぜ強いかを2〜3文で簡潔に記述してください。競合との差別化点や技術的独自性も含めて記載します。</section>
+      <section class="poster-element shape shape_07" style="left:3.7333%;top:18.8513%;width:45.2667%;height:15.8351%;background:#EAF1FB;border-color:#C8DCFA;color:#111827;font-size:clamp(4px, 1.2cqw, 18px);" data-placeholder="{{shape_07}}"></section>
+      <section class="poster-element shape shape_08" style="left:3.7333%;top:18.8513%;width:45.2667%;height:2.8277%;background:#1E3A5F;border-color:#1E3A5F;color:#111827;font-size:clamp(4px, 1.2cqw, 18px);" data-placeholder="{{shape_08}}"></section>
+      <section class="poster-element text section-heading shape_09" style="left:3.7333%;top:18.8513%;width:45.2667%;height:2.8277%;background:transparent;border-color:transparent;color:#FFFFFF;font-size:clamp(4px, 2.963cqw, 38.4px);font-weight:700;" data-placeholder="{{shape_09}}">対応する課題</section>
+      <section class="poster-element text shape_10" style="left:5.0667%;top:22.056%;width:43.4%;height:12.0648%;background:transparent;border-color:transparent;color:#2D3748;font-size:clamp(4px, 1.7593cqw, 22.8px);" data-placeholder="{{shape_10}}">課題①：〇〇に関する問題点・ペインポイント<br>課題②：〇〇における非効率性・コスト超過<br>課題③：〇〇の未解決事項・技術的ギャップ</section>
+      <section class="poster-element shape shape_11" style="left:51.0%;top:18.8513%;width:45.2667%;height:15.8351%;background:#E4F3F1;border-color:#C8DCFA;color:#111827;font-size:clamp(4px, 1.2cqw, 18px);" data-placeholder="{{shape_11}}"></section>
+      <section class="poster-element shape shape_12" style="left:51.0%;top:18.8513%;width:45.2667%;height:2.8277%;background:#028090;border-color:#028090;color:#111827;font-size:clamp(4px, 1.2cqw, 18px);" data-placeholder="{{shape_12}}"></section>
+      <section class="poster-element text section-heading shape_13" style="left:51.0%;top:18.8513%;width:45.2667%;height:2.8277%;background:transparent;border-color:transparent;color:#FFFFFF;font-size:clamp(4px, 2.963cqw, 38.4px);font-weight:700;" data-placeholder="{{shape_13}}">提供する価値</section>
+      <section class="poster-element text shape_14" style="left:52.3333%;top:22.056%;width:43.4%;height:12.0648%;background:transparent;border-color:transparent;color:#2D3748;font-size:clamp(4px, 1.7593cqw, 22.8px);" data-placeholder="{{shape_14}}">価値①：〇〇の大幅な改善・パフォーマンス向上<br>価値②：〇〇の効率化・コスト削減・時間短縮<br>価値③：〇〇における新たな可能性・革新的変化</section>
+      <section class="poster-element shape shape_15" style="left:3.7333%;top:35.4404%;width:92.5333%;height:29.2194%;background:#FFFFFF;border-color:#C8DCFA;color:#111827;font-size:clamp(4px, 1.2cqw, 18px);" data-placeholder="{{shape_15}}"></section>
+      <section class="poster-element shape shape_16" style="left:3.7333%;top:35.4404%;width:92.5333%;height:2.8277%;background:#1E3A5F;border-color:#1E3A5F;color:#111827;font-size:clamp(4px, 1.2cqw, 18px);" data-placeholder="{{shape_16}}"></section>
+      <section class="poster-element text section-heading shape_17" style="left:3.7333%;top:35.4404%;width:92.5333%;height:2.8277%;background:transparent;border-color:transparent;color:#FFFFFF;font-size:clamp(4px, 2.963cqw, 38.4px);font-weight:700;" data-placeholder="{{shape_17}}">概　　要</section>
+      <section class="poster-element shape shape_18" style="left:5.0667%;top:39.0221%;width:89.8667%;height:24.5066%;background:#EFF4FC;border-color:#C8DCFA;color:#111827;font-size:clamp(4px, 1.2cqw, 18px);" data-placeholder="{{shape_18}}"></section>
+      <section class="poster-element text shape_19" style="left:5.0667%;top:39.0221%;width:89.8667%;height:24.5066%;background:transparent;border-color:transparent;color:#8899AA;font-size:clamp(4px, 1.9444cqw, 25.2px);" data-placeholder="{{shape_19}}">【概要図・説明エリア】<br>研究の概要・手法・技術的仕組み・成果のビジュアルをここに配置<br>（アーキテクチャ図・フローチャート・実験結果グラフ等を挿入）</section>
+      <section class="poster-element shape shape_20" style="left:3.7333%;top:65.4138%;width:45.2667%;height:15.2695%;background:#EAF1FB;border-color:#C8DCFA;color:#111827;font-size:clamp(4px, 1.2cqw, 18px);" data-placeholder="{{shape_20}}"></section>
+      <section class="poster-element shape shape_21" style="left:3.7333%;top:65.4138%;width:45.2667%;height:2.8277%;background:#1E3A5F;border-color:#1E3A5F;color:#111827;font-size:clamp(4px, 1.2cqw, 18px);" data-placeholder="{{shape_21}}"></section>
+      <section class="poster-element text section-heading shape_22" style="left:3.7333%;top:65.4138%;width:45.2667%;height:2.8277%;background:transparent;border-color:transparent;color:#FFFFFF;font-size:clamp(4px, 2.8148cqw, 36.48px);font-weight:700;" data-placeholder="{{shape_22}}">適用分野・事業機会</section>
+      <section class="poster-element text shape_23" style="left:5.0667%;top:68.6186%;width:43.4%;height:11.4993%;background:transparent;border-color:transparent;color:#2D3748;font-size:clamp(4px, 1.7593cqw, 22.8px);" data-placeholder="{{shape_23}}">分野①：〇〇産業・製造業への直接応用<br>分野②：〇〇サービス・プラットフォーム展開<br>分野③：〇〇マーケットにおける新規参入機会</section>
+      <section class="poster-element shape shape_24" style="left:51.0%;top:65.4138%;width:45.2667%;height:15.2695%;background:#E4F3F1;border-color:#C8DCFA;color:#111827;font-size:clamp(4px, 1.2cqw, 18px);" data-placeholder="{{shape_24}}"></section>
+      <section class="poster-element shape shape_25" style="left:51.0%;top:65.4138%;width:45.2667%;height:2.8277%;background:#028090;border-color:#028090;color:#111827;font-size:clamp(4px, 1.2cqw, 18px);" data-placeholder="{{shape_25}}"></section>
+      <section class="poster-element text section-heading shape_26" style="left:51.0%;top:65.4138%;width:45.2667%;height:2.8277%;background:transparent;border-color:transparent;color:#FFFFFF;font-size:clamp(4px, 2.8148cqw, 36.48px);font-weight:700;" data-placeholder="{{shape_26}}">現況と予定</section>
+      <section class="poster-element text shape_27" style="left:52.3333%;top:68.6186%;width:43.4%;height:11.4993%;background:transparent;border-color:transparent;color:#2D3748;font-size:clamp(4px, 1.7593cqw, 22.8px);" data-placeholder="{{shape_27}}">現況①：〇〇フェーズ（TRL X）達成・検証完了<br>予定①：〇〇年度に〇〇を実施・実証試験予定<br>予定②：〇〇部門との連携・事業化検討を計画</section>
+      <section class="poster-element shape shape_28" style="left:3.7333%;top:81.4374%;width:92.5333%;height:8.6716%;background:#FFF8E6;border-color:#F0C040;color:#111827;font-size:clamp(4px, 1.2cqw, 18px);" data-placeholder="{{shape_28}}"></section>
+      <section class="poster-element shape shape_29" style="left:3.7333%;top:81.4374%;width:92.5333%;height:2.6392%;background:#C87800;border-color:#C87800;color:#111827;font-size:clamp(4px, 1.2cqw, 18px);" data-placeholder="{{shape_29}}"></section>
+      <section class="poster-element text section-heading shape_30" style="left:3.7333%;top:81.4374%;width:92.5333%;height:2.6392%;background:transparent;border-color:transparent;color:#FFFFFF;font-size:clamp(4px, 2.963cqw, 38.4px);font-weight:700;" data-placeholder="{{shape_30}}">討　論　事　項</section>
+      <section class="poster-element text shape_31" style="left:5.0667%;top:84.4536%;width:90.6667%;height:5.0898%;background:transparent;border-color:transparent;color:#4A3500;font-size:clamp(4px, 1.7593cqw, 22.8px);" data-placeholder="{{shape_31}}">討論①：〇〇についてどのようにお考えでしょうか？貴社・貴組織視点からのご意見をお聞かせください。<br>討論②：〇〇に関する貴組織のニーズ・展開可能性・連携可能性について</section>
+      <section class="poster-element shape shape_32" style="left:0.0%;top:90.7688%;width:100.0%;height:3.9588%;background:#1E3A5F;border-color:#1E3A5F;color:#111827;font-size:clamp(4px, 1.2cqw, 18px);" data-placeholder="{{shape_32}}"></section>
+      <section class="poster-element text shape_33" style="left:3.7333%;top:90.7688%;width:30.8444%;height:3.9588%;background:transparent;border-color:transparent;color:#FFFFFF;font-size:clamp(4px, 1.5741cqw, 20.4px);" data-placeholder="{{shape_33}}">代表発表者：氏名　太郎（〇〇部）</section>
+      <section class="poster-element text shape_34" style="left:34.5778%;top:90.7688%;width:30.8444%;height:3.9588%;background:transparent;border-color:transparent;color:#FFFFFF;font-size:clamp(4px, 1.5741cqw, 20.4px);" data-placeholder="{{shape_34}}">連携部署：〇〇部門 ／ △△グループ</section>
+      <section class="poster-element text shape_35" style="left:65.4222%;top:90.7688%;width:30.8444%;height:3.9588%;background:transparent;border-color:transparent;color:#C8DCFA;font-size:clamp(4px, 1.4815cqw, 19.2px);" data-placeholder="{{shape_35}}">略語：AI：人工知能　ML：機械学習　LLM：大規模言語モデル</section>
+    </main>
+    <script>
+      function fitPosterText() {
+        const elements = document.querySelectorAll(".poster-element.text:not(.poster-title):not(.section-heading)");
+        for (const element of elements) {
+          const style = window.getComputedStyle(element);
+          let size = parseFloat(style.fontSize);
+          const minSize = 10;
+          while (size > minSize && element.scrollHeight > element.clientHeight) {
+            size -= 0.5;
+            element.style.fontSize = size + "px";
+          }
+        }
+      }
+
+      window.addEventListener("load", () => {
+        if (document.fonts && document.fonts.ready) {
+          document.fonts.ready.then(fitPosterText);
+        } else {
+          fitPosterText();
+        }
+      });
+      window.addEventListener("resize", fitPosterText);
+    </script>
+  </body>
+</html>

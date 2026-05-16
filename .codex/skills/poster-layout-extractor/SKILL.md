@@ -1,66 +1,88 @@
 ---
 name: poster-layout-extractor
-description: Use when converting a single-slide PPTX poster, research poster, or layout-heavy PowerPoint template into an HTML template while preserving approximate element placement.
+description: Use when 単一スライドのPPTXポスター、研究ポスター、またはレイアウト重視のPowerPointテンプレートをHTMLテンプレートへ変換し、配置と見た目を元資料に近づける必要があるとき。
 ---
 
-# Poster Layout Extractor
+# ポスターレイアウト抽出
 
-## Purpose
+## 目的
 
-Use this skill to turn a one-slide PPTX poster/template into a reusable HTML layout draft. The goal is placement fidelity, not a perfect PowerPoint renderer.
+このスキルは、1枚スライドのPPTXポスターやテンプレートから、再利用できるHTMLレイアウトの下書きを作るために使う。目的はPowerPointを完全再現することではなく、配置、文字階層、セクション構造、画像位置を実用上近い状態まで寄せること。
 
-## Scope
+生成して終わりにしない。必ず元のPPTXと生成HTMLを見比べ、文字サイズ、見出し、余白、重なり、欠落を確認し、必要ならスクリプトまたは生成HTMLを修正する。
 
-Extract:
-- slide size and aspect ratio
-- text boxes, shapes, tables, and pictures
-- left/top/width/height as percentages
-- text content and generated placeholders
-- best-effort solid fill, line, and text colors
+## 対象範囲
 
-Do not promise exact reproduction of gradients, shadows, theme colors, animations, grouped-shape transforms, or font rendering.
+抽出できるもの:
+- スライドサイズと縦横比
+- テキストボックス、図形、表、画像
+- 左、上、幅、高さのパーセント位置
+- 元テキストと生成プレースホルダー
+- 単色の塗り、線、文字色のベストエフォート復元
+- 取得できる範囲のフォントサイズ
 
-## Workflow
+正確な再現を約束しないもの:
+- グラデーション、影、テーマ色の完全再現
+- アニメーション
+- グループ化図形の複雑な変換
+- PowerPointとブラウザ間の完全なフォント描画一致
 
-1. Confirm the input is a `.pptx` file and that the expected target is a one-slide poster/template.
-2. Choose an output directory. Prefer a throwaway directory first, such as `.codex-output/poster-layout/<name>/`.
-3. Run the bundled script from the repository root:
+## 基本フロー
+
+1. 入力が `.pptx` で、対象が1枚スライドのポスターまたはテンプレートであることを確認する。
+2. 出力先は `templates/html/<name>/` 配下に新規フォルダとして作る。`<name>` は元PPTXやテンプレートの内容が分かる短い名前にする。
+3. リポジトリルートから同梱スクリプトを実行する。
 
    ```bash
-   python .codex/skills/poster-layout-extractor/scripts/extract-layout.py <input.pptx> <output_dir>
+   python .codex/skills/poster-layout-extractor/scripts/extract-layout.py <input.pptx> templates/html/<name>
    ```
 
-4. Inspect `<output_dir>/layout.json` and `<output_dir>/extraction-report.json`.
-5. Summarize for the user:
-   - slide dimensions and shape count
-   - text/image/table counts
-   - whether `text_integrity.missing_in_preview` is empty
-   - large regions that likely correspond to poster sections
-   - any extraction limitations or unsupported styling
-6. Point the user to:
-   - `<output_dir>/preview.html` for visual placement review
-   - `<output_dir>/poster-template.html` for placeholder-based editing
-7. Ask which generated placeholders should be renamed to domain fields such as `title`, `background`, `method`, `findings`, or `diagram`.
+4. `templates/html/<name>/layout.json` と `templates/html/<name>/extraction-report.json` を確認する。
+5. `templates/html/<name>/preview.html` を開き、元PPTXと視覚的に比較する。ブラウザ確認が必要ならローカルサーバーやヘッドレスブラウザのスクリーンショットを使う。
+6. 差分を分類する。
+   - 複数テンプレートで再発しそうな問題は、スクリプトを直して再生成する。
+   - その生成物だけの最終調整なら、生成HTMLやCSSを直接直してよい。ただし、再生成すると上書きされることをユーザーに伝える。
+7. 修正後は再度HTMLを確認し、元PPTXに十分近づくまで繰り返す。
+8. 最後にユーザーへ、出力ファイル、抽出できた要素数、残る制約、確認した観点を短く報告する。
+9. プレースホルダーを `title`、`background`、`method`、`findings`、`diagram` などのドメイン名へ置き換える必要があるか確認する。
 
-## Outputs
+## 視覚確認の観点
 
-The script creates:
+報告前に必ず確認する:
+- `layout.json` が存在し、スライド数が1である。
+- `extraction-report.json` の `text_integrity.missing_in_preview` が空である。
+- 生成HTMLに `.poster-canvas` と絶対配置の `.poster-element` がある。
+- 表示されるテキストボックスに対応するプレースホルダーがある。
+- `preview.html` が参照する画像が `assets/` 配下に存在する。
+- 研究タイトルが元PPTXに近い大きさで、本文より十分目立つ。
+- セクション見出しが本文より明確に大きい。
+- 本文が小さくなりすぎていない。
+- 日本語が豆腐文字や欠落文字になっていない。
+- セクションブロック内の本文1行目が、HTMLの改行や空白の影響でタブのように右へずれていない。
+- テキスト自動縮小処理が、タイトルやセクション見出しを過剰に小さくしていない。
+- 図形、背景色、セクション枠、画像位置が元PPTXの印象に近い。
+- 主要要素の重なり、はみ出し、読めない文字がない。
 
-- `layout.json`: machine-readable layout data
-- `extraction-report.json`: text-integrity and shape-count checks
-- `poster-template.html`: HTML template with `{{shape_XX}}` placeholders
-- `preview.html`: same layout populated with extracted text and images where available
-- `assets/`: copied image assets, if the PPTX contains pictures
+## 別テンプレートでの調整ポイント
 
-## Review Checklist
+PowerPointテンプレートごとに、次の点はスクリプト側の調整が必要になることがある:
+- セクション見出しの文言が異なる場合は、`SECTION_HEADER_TEXTS` に追加する。
+- 研究タイトルの判定が外れる場合は、タイトル検出条件を見直す。
+- 見出しや本文の文字サイズがずれる場合は、フォントサイズ変換、見出しクラス、テキスト自動縮小の対象を見直す。
+- 1行目だけ右にずれる場合は、生成HTML内の空白と `white-space` の組み合わせを疑う。
+- 日本語の表示が弱い場合は、HTMLの `lang` と日本語フォントスタックを確認する。
+- 図形の塗りや線が違う場合は、PPTXのテーマ色、透明度、グラデーションがベストエフォート扱いであることを確認する。
 
-Before reporting results, verify:
+## 出力
 
-- `layout.json` exists and has exactly one slide
-- `extraction-report.json` reports no `missing_in_preview` text
-- generated HTML contains `.poster-canvas` and absolutely positioned `.poster-element` blocks
-- visible text boxes have corresponding placeholders
-- images referenced in `preview.html` exist under `assets/`
-- the user understands colors are best-effort only
+標準の出力先は `templates/html/<name>/` とする。スクリプトはその中に次を作成する:
 
-If the PPTX has multiple slides, stop after extraction and explain that this skill is currently intended for one-slide poster templates.
+- `layout.json`: 機械処理向けのレイアウトデータ
+- `extraction-report.json`: テキスト欠落と要素数の確認結果
+- `poster-template.html`: `{{shape_XX}}` 形式のプレースホルダーを入れたHTMLテンプレート
+- `preview.html`: 抽出テキストと画像を入れた視覚確認用HTML
+- `assets/`: PPTXに画像がある場合のコピー先
+
+## 複数スライドの場合
+
+PPTXに複数スライドがある場合は、抽出結果を確認したうえで、このスキルは現在1枚スライドのポスター用であることを説明する。勝手に複数ページHTMLへ拡張しない。
