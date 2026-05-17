@@ -179,6 +179,7 @@ outputs/posters/<slug>/preview.backup-YYYYMMDD-HHMMSS.html
 ```
 
 HTML生成時は次を守る:
+- **HTMLファイルは Read ツールで読んでから Edit ツールで直接更新する。中間スクリプト（`generate.py` 等）は作らない。**
 - 既存のレイアウト、CSS、スクリプトは維持する。
 - 対象 `shape_XX` の中身だけを置き換える。
 - 日本語本文の箇条書きは、HTML上では `<br>` 区切りにする。
