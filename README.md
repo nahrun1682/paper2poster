@@ -1,210 +1,81 @@
----
-tags: [lab, agent, poster, skill, langgraph, deep-agent, mermaid]
-created: 2026-05-15
-status: 設計中
----
+# paper2poster
 
-# 🎨 討論会用ポスター生成エージェント
+研究報告書や論文のPDFを入力に、社内討論会向けポスターの草案を作るためのリポジトリ。
+このプロジェクトの出力は完成版ではなく草案であり、最終仕上げはPowerPointで人が行う前提。
 
-> 研究報告書（PDF）から社内討論会用ポスター草案をHTMLで生成するエージェント。人間がパワポで仕上げることを前提とした「草案サポーター」。
+主な役割は次の2つ。
 
-## 📋 TL;DR
+- 内容設計: paper-to-poster-drafter スキルで、セクションを対話で確定
+- レイアウト変換: poster-layout-extractor スキルで、PPTXレイアウトをHTMLへ変換
 
-- **インプット**：研究報告書PDF
-- **アウトプット**：討論会用HTMLポスター草案（mermaid図入り）
-- **使い方**：VSCodeでSKILL.md（Claude Code / Codex）、またはお試しチャットUI（LangGraph Deep Agent）
-- **スコープ**：完成品ではなく「草案」。最終仕上げは人間がパワポで行う
+対象環境は VS Code 上の Codex、GitHub Copilot Chat、Claude 系ワークフロー。
 
-## 🛠 セットアップ（研究者向け）
+## クイックスタート
 
-このリポジトリは Python 環境を uv で管理する。
-clone 直後は次の2コマンドを実行する。
+clone 直後に次の手順を実行する。
 
-```bash
-uv sync
-uv run playwright install chromium
-```
+    uv sync
+    uv run playwright install chromium
 
-- `uv sync` は Python 依存をインストールする。
-- `uv run playwright install chromium` はスクリーンショット確認に必要なブラウザ実体を取得する。
-- ポスター生成スキル（paper-to-poster-drafter）は、環境構築の説明を持たず、このREADMEの手順が事前に完了していることを前提とする。
+上記が完了していれば、Playwright視覚確認を含むポスター生成フローを再現できる。
 
----
+VS Code のエージェントチャットで、次のように依頼するとポスター作成フェーズを開始できる。
 
-## 🗺 全体設計
+    paper-to-poster-drafterスキルを使ってdata/paperにある研究報告書からポスター作成フェーズを開始して
 
-```
-【本番】
-Claude Code / Codex + SKILL.md
-└ VSCodeでローカル動作
-  PDFはファイルシステムから直接読み込み
+## 何ができるか
 
-【お試しUI】
-LangGraph Deep Agent
-└ SKILL.mdをシステムプロンプトに流用
-  PDFアップロードはWebUI経由
-  本番と完全一致しなくてOK（お試し割り切り）
-```
+paper-to-poster-drafter でできること。
 
----
+- PDF内容をもとに、ポスターの各セクション文案を選択肢形式で確定
+- 既存HTMLテンプレートへ確定文言を差し込み
+- 概要領域にインラインSVGを埋め込み、プレビュー可能な状態を作成
+- Markdown草案とHTML草案を同時に出力
 
-## 🔄 エージェントのワークフロー
+poster-layout-extractor でできること。
 
-```
-① PDF投入
-   └ 自動で要約 ＋ 3パターンの切り口を提示
+- 単一スライドのPPTXポスターから、配置と見た目を再現したHTMLテンプレートを生成
 
-② ユーザーがテキストで選択・調整
-   例：「Bで、ただし手法の部分は省いて」
-   例：「Aベースで結論も入れて」
+## 標準入出力
 
-③ Claudeが構造化JSON生成
-   └ 足りない情報は「ここ追記できますか？」と聞く
+paper-to-poster-drafter の標準パス。
 
-④ mermaid図の生成（シンプル限定）
-   └ ノード数10以内、3種類から選択
+- 入力PDF: data/paper/<paper>.pdf
+- 入力テンプレート: templates/html/research-template/preview.html
+- 出力Markdown: docs/<slug>/poster-draft.md
+- 出力HTML: outputs/posters/<slug>/preview.html
 
-⑤ HTMLテンプレートに差し込んでポスター出力
-```
+必要に応じて、追加観点ファイルを使って候補生成の方向づけを上書きできる。
+各ハーネスでは、自分のスキルフォルダ配下にある additional-considerations.md を読む。
 
-### ポスターの切り口パターン（案）
+## 再現運用の前提
 
-| パターン | 前面に出すもの | 向いているケース |
-|---------|-------------|----------------|
-| A) 課題提起型 | 「なぜこれが問題か」 | 問題認識を共有したいとき |
-| B) 結果訴求型 | 「何がわかったか」 | 成果を伝えたいとき |
-| C) 提言型 | 「何をすべきか」 | アクションを促したいとき |
+このリポジトリでは、環境セットアップとスキル実行を分離している。
 
----
+- 環境構築はREADMEで一元管理
+- スキルは内容設計と変換フローに集中
 
-## 🧩 SKILL.mdの構成（予定）
+ただし配布性のため、paper-to-poster-drafter 側にも最小限の環境前提は記載している。
 
-```
-SKILL.md
-├── WORKFLOW       ← ①〜⑤の手順
-├── EXTRACTION_RULES  ← 報告書から何をどう抜くか
-└── POSTER_FIELDS     ← テンプレートのプレースホルダー定義
-```
+## 推奨ワークフロー
 
-`POSTER_FIELDS`はHTMLテンプレートのプレースホルダーと1対1対応させる。
+1. テンプレートが未整備なら、poster-layout-extractor でHTMLテンプレートを作る
+2. paper-to-poster-drafter でセクションを順に確定する
+3. outputs/posters/<slug>/preview.html を生成し、視覚確認する
+4. docs/<slug>/poster-draft.md をレビューしてPowerPoint仕上げに渡す
 
----
+## 依存関係
 
-## 🖼 mermaid図の方針
+Python依存は pyproject.toml で管理する。
+ブラウザ実体は Playwright の install コマンドで取得する。
 
-シンプル限定（ノード数10以内）：
+## 既知の運用ポイント
 
-```
-flowchart型  → 研究プロセス・手順系
-graph型      → 関係性・因果系
-quadrant型   → 比較・マッピング系
-```
+- 初回セットアップで playwright install を省略すると、視覚確認時にブラウザ実体不足で失敗する
+- outputs は生成物置き場。テンプレート本体は templates 側を直接編集しない
+- 既存出力を更新する場合はバックアップを残す
 
-- 複雑な図は作らない（崩れるため）
-- あくまで草案。細部は人間がパワポで仕上げる
-- SKILL.mdに「シンプルに絞る」制約を明記する
+## 参考資料
 
----
-
-## 🔧 技術スタック
-
-### テンプレート生成
-- **frontend-slides**スキル（PPTX→HTML変換）
-  - `npx claudepluginhub burgebj/claude_everything`
-  - `/frontend-slides`コマンドで起動
-  - `python-pptx`でPPTXからレイアウト・色・フォントを抽出
-
-### 参考リポジトリ
-- **posterskill**（ethanweber/posterskill）
-  - https://github.com/ethanweber/posterskill
-  - ⭐142、フォーク15
-  - ブラウザが編集UIになる単一HTMLファイル
-  - Overleaf（LaTeX）前提なのでそのままは使えない
-  - **思想・HTMLエディタ構造を参考にする**
-  - 入力をPDFに差し替えるカスタマイズが必要
-- **pptx-postersスキル**
-  - HTML/CSS → PDF/PPTX変換まで対応
-
-### お試しUI
-- **LangGraph Deep Agent**
-  - `uv add deepagents`
-  - SKILL.mdをシステムプロンプトに流用
-  - メモリ：`InMemorySaver` + `InMemoryStore`（DBなし、セッション内のみ）
-
-```python
-from deepagents import create_deep_agent
-from langgraph.checkpoint.memory import InMemorySaver
-from langgraph.store.memory import InMemoryStore
-
-agent = create_deep_agent(
-    skills=["./skills/poster-generator"],
-    checkpointer=InMemorySaver(),
-    store=InMemoryStore(),
-    system_prompt="社内討論会ポスター生成エージェント"
-)
-```
-
----
-
-## 📂 インプット形式
-
-- **メイン**：PDF（研究報告書）
-- 報告書のフォーマットは大体決まっている → 抽出精度が上がる
-- 将来的に複数PDFや他形式も受け付けられるようにしたい
-
----
-
-## ⚠️ 未確定事項（休み明けに確認）
-
-- [ ] **ポスターのセクション構成**（テンプレートPPTXから確認）
-  - セクションが固まったらPOSTER_FIELDSを定義できる
-  - HTMLプレースホルダーとの1対1対応を設計する
-
----
-
-## 🚀 優先順位・ToDoリスト
-
-```
-① セクション確認（休み明け）← ここが最優先
-② テンプレートHTML + プレースホルダー定義
-③ SKILL.md作成（WORKFLOW / EXTRACTION_RULES / POSTER_FIELDS）
-④ frontend-slidesでPPTX→HTML変換を試す
-⑤ posterskillをcloneして感触を掴む
-⑥ お試しDeep Agentはその後
-```
-
----
-
-## 💡 設計メモ・判断ログ
-
-### なぜパワポ直接生成でなくHTML草案か
-- パワポをLLMに直接作らせるのはハード（レイアウト崩れやすい）
-- HTML→ブラウザプレビュー→人間がパワポで仕上げる方が現実的
-- 「完成品」ではなく「草案で作業を10分の1にする」がスコープ
-
-### なぜDeep Agentをお試しUIに選んだか
-- SKILL.md形式をネイティブサポートしている
-- 本番（Claude Code/Codex）とSKILL.mdを共有できる
-- メモリ・サブエージェント・ファイル操作が最初から入っている
-- DB不要（InMemory実装がある）
-
-### mermaidをシンプルに限定する理由
-- 複雑な図はレイアウトが崩れやすい
-- 最終仕上げは人間がパワポでやる前提
-- 「草案が出力されること」が目的であり、図の完成度は問わない
-
-### MCPについて
-- posterskillはSKILL.mdのみ（MCPなし）→ Codexでもそのまま使える
-- SKILLさえ書ければエージェントフレームワーク側で動く設計
-
----
-
-## 📚 参考リンク
-
-- [posterskill GitHub](https://github.com/ethanweber/posterskill)
-- [pptx-posters skill](https://mcpmarket.com/tools/skills/pptx-research-posters-2)
-- [frontend-slides skill](https://github.com/zarazhangrui/frontend-slides)
-- [Deep Agents docs](https://docs.langchain.com/oss/python/deepagents/overview)
-- [LangGraph Deep Agent skills](https://docs.langchain.com/oss/python/deepagents/skills)
-
----
+- README_参考.md は初期検討メモ
+- 実運用の正本はこの README
