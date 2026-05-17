@@ -194,5 +194,3 @@ agent = create_deep_agent(
 - [LangGraph Deep Agent skills](https://docs.langchain.com/oss/python/deepagents/skills)
 
 ---
-
-*作成：2026-05-15 リーとの設計会話より*

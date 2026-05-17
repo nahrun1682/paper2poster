@@ -229,6 +229,7 @@ __marimo__/
 !.claude/skills/paper-to-poster-drafter/**
 .codex
 !.codex/
+.codex/*
 !.codex/skills/
 .codex/skills/*
 !.codex/skills/poster-layout-extractor/
