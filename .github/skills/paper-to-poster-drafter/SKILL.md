@@ -18,7 +18,7 @@ description: Use when 研究論文・研究報告書PDFをもとに、社内討�
 - HTMLテンプレート: `templates/html/research-template/preview.html`
 
 任意の追加入力:
-- 追加観点ファイル: `.codex/skills/paper-to-poster-drafter/additional-considerations.md`
+- 追加観点ファイル: `.github/skills/paper-to-poster-drafter/additional-considerations.md`
 
 PDFはarXiv論文のような研究論文に限らない。社内報告書、技術調査レポート、実証報告書、PoC報告書でもよい。論文なら課題、提案手法、実験結果、限界を拾う。報告書なら背景、現状、提案、検証結果、今後の予定を拾う。
 
@@ -36,7 +36,7 @@ PDFはarXiv論文のような研究論文に限らない。社内報告書、技
 
 ## 対話ルール
 
-- セッション開始時に、`.codex/skills/paper-to-poster-drafter/additional-considerations.md` が存在すれば必ず読む。
+- セッション開始時に、`.github/skills/paper-to-poster-drafter/additional-considerations.md` が存在すれば必ず読む。
 - 追加観点ファイルの `全体` は全セクションに適用する。
 - 追加観点ファイルに各セクション名（例: `研究タイトル`、`概要リード`）の見出しがあれば、そのセクション候補作成時に反映する。
 - 追加観点は「候補文の方向づけ」に使い、出力Markdownへ「追加観点ファイルの本文」をそのまま転載しない。

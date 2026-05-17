@@ -219,16 +219,36 @@ __marimo__/
 
 # Local agent/runtime files
 .claude
+!.claude/
+.claude/*
+!.claude/skills/
+.claude/skills/*
+!.claude/skills/poster-layout-extractor/
+!.claude/skills/poster-layout-extractor/**
+!.claude/skills/paper-to-poster-drafter/
+!.claude/skills/paper-to-poster-drafter/**
 .codex
 !.codex/
 !.codex/skills/
+.codex/skills/*
 !.codex/skills/poster-layout-extractor/
 !.codex/skills/poster-layout-extractor/**
 !.codex/skills/paper-to-poster-drafter/
 !.codex/skills/paper-to-poster-drafter/**
 .github
+!.github/
+.github/*
+!.github/skills/
+.github/skills/*
+!.github/skills/poster-layout-extractor/
+!.github/skills/poster-layout-extractor/**
+!.github/skills/paper-to-poster-drafter/
+!.github/skills/paper-to-poster-drafter/**
 AGENTS.md
 CLAUDE.md
+
+# Generated outputs
+outputs/
 
 # Generated poster/layout review artifacts
 .codex-output/
