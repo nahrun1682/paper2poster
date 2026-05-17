@@ -15,20 +15,6 @@ status: 設計中
 - **使い方**：VSCodeでSKILL.md（Claude Code / Codex）、またはお試しチャットUI（LangGraph Deep Agent）
 - **スコープ**：完成品ではなく「草案」。最終仕上げは人間がパワポで行う
 
-## 🛠 セットアップ（研究者向け）
-
-このリポジトリは Python 環境を uv で管理する。
-clone 直後は次の2コマンドを実行する。
-
-```bash
-uv sync
-uv run playwright install chromium
-```
-
-- `uv sync` は Python 依存をインストールする。
-- `uv run playwright install chromium` はスクリーンショット確認に必要なブラウザ実体を取得する。
-- ポスター生成スキル（paper-to-poster-drafter）は、環境構築の説明を持たず、このREADMEの手順が事前に完了していることを前提とする。
-
 ---
 
 ## 🗺 全体設計

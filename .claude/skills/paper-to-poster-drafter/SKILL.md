@@ -20,6 +20,11 @@ description: Use when 研究論文・研究報告書PDFをもとに、社内討�
 任意の追加入力:
 - 追加観点ファイル: `.claude/skills/paper-to-poster-drafter/additional-considerations.md`
 
+環境前提（配布向け）:
+- clone 直後に `uv sync` を実行し、Python依存をそろえる。
+- Playwright視覚確認の前に `uv run playwright install chromium` を1回実行する。
+- このスキルの内容設計・HTML差し込みフローは、上記セットアップ完了を前提とする。
+
 PDFはarXiv論文のような研究論文に限らない。社内報告書、技術調査レポート、実証報告書、PoC報告書でもよい。論文なら課題、提案手法、実験結果、限界を拾う。報告書なら背景、現状、提案、検証結果、今後の予定を拾う。
 
 `preview.html` の既存文言はサンプルであり、研究内容に合わせて自由に置き換える。既存の例文の要素や表現に従いすぎない。
